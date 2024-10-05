@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BlogListing from '~/components/blogListing.vue';
+import Menu from '~/components/menu.vue';
 // import { components } from "~/slices";
 
 // const prismic = usePrismic();
@@ -20,6 +21,8 @@ import BlogListing from '~/components/blogListing.vue';
     <NuxtWelcome /> -->
     <NuxtPage />
     <BlogListing />
+
+    <Menu />
 
 
     <!-- <SliceZone

@@ -188,7 +188,9 @@ export type Blogpost2slicesDocument<Lang extends string = string> =
     Lang
   >;
 
-type Blogpost01DocumentDataSlicesSlice = TextImageTextSlice;
+type Blogpost01DocumentDataSlicesSlice =
+  | BlogPostPreviewSlice
+  | TextImageTextSlice;
 
 /**
  * Content for blogpost_01 documents
@@ -318,12 +320,262 @@ export type BlogposttestDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *categories → subCategories*
+ */
+export interface CategoriesDocumentDataSubcategoriesItem {
+  /**
+   * SubCategory field in *categories → subCategories*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categories.subcategories[].subcategory
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  subcategory: prismic.ContentRelationshipField<"categories">;
+}
+
+/**
+ * Content for categories documents
+ */
+interface CategoriesDocumentData {
+  /**
+   * Title field in *categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Title
+   * - **API ID Path**: categories.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Link
+   * - **API ID Path**: categories.link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link: prismic.KeyTextField;
+
+  /**
+   * Order field in *categories*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 1
+   * - **API ID Path**: categories.order
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  order: prismic.NumberField;
+
+  /**
+   * subCategories field in *categories*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categories.subcategories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  subcategories: prismic.GroupField<
+    Simplify<CategoriesDocumentDataSubcategoriesItem>
+  >;
+}
+
+/**
+ * categories document from Prismic
+ *
+ * - **API ID**: `categories`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoriesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CategoriesDocumentData>,
+    "categories",
+    Lang
+  >;
+
+/**
+ * Item in *category → Subcategories*
+ */
+export interface CategoryDocumentDataSubcategoriesItem {
+  /**
+   * Subcategory field in *category → Subcategories*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.subcategories[].subcategory
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  subcategory: prismic.ContentRelationshipField<"category">;
+}
+
+/**
+ * Content for category documents
+ */
+interface CategoryDocumentData {
+  /**
+   * Title field in *category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: title
+   * - **API ID Path**: category.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: link
+   * - **API ID Path**: category.link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link: prismic.KeyTextField;
+
+  /**
+   * Order field in *category*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 1
+   * - **API ID Path**: category.order
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  order: prismic.NumberField;
+
+  /**
+   * Subcategories field in *category*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.subcategories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  subcategories: prismic.GroupField<
+    Simplify<CategoryDocumentDataSubcategoriesItem>
+  >;
+}
+
+/**
+ * category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategoryDocumentData>,
+    "category",
+    Lang
+  >;
+
+interface GlobalmenuDocumentData {}
+
+/**
+ * globalMenu document from Prismic
+ *
+ * - **API ID**: `globalmenu`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GlobalmenuDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GlobalmenuDocumentData>,
+    "globalmenu",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | BlogpostDocument
   | Blogpost2Document
   | Blogpost2slicesDocument
   | Blogpost01Document
-  | BlogposttestDocument;
+  | BlogposttestDocument
+  | CategoriesDocument
+  | CategoryDocument
+  | GlobalmenuDocument;
+
+/**
+ * Primary content in *BlogPostPreview → Default → Primary*
+ */
+export interface BlogPostPreviewSliceDefaultPrimary {
+  /**
+   * BlogPostImagePreview field in *BlogPostPreview → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_preview.default.primary.blogpostimagepreview
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  blogpostimagepreview: prismic.ImageField<never>;
+
+  /**
+   * BlogPostTitlePreview field in *BlogPostPreview → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_preview.default.primary.blogposttitlepreview
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  blogposttitlepreview: prismic.KeyTextField;
+
+  /**
+   * BlogPostDescPreview field in *BlogPostPreview → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: BlogPostDescPreview
+   * - **API ID Path**: blog_post_preview.default.primary.blogpostdescpreview
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  blogpostdescpreview: prismic.RichTextField;
+}
+
+/**
+ * Default variation for BlogPostPreview Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogPostPreviewSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogPostPreviewSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogPostPreview*
+ */
+type BlogPostPreviewSliceVariation = BlogPostPreviewSliceDefault;
+
+/**
+ * BlogPostPreview Shared Slice
+ *
+ * - **API ID**: `blog_post_preview`
+ * - **Description**: BlogPostPreview
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogPostPreviewSlice = prismic.SharedSlice<
+  "blog_post_preview",
+  BlogPostPreviewSliceVariation
+>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -623,6 +875,17 @@ declare module "@prismicio/client" {
     ): prismic.Client<AllDocumentTypes>;
   }
 
+  interface CreateWriteClient {
+    (
+      repositoryNameOrEndpoint: string,
+      options: prismic.WriteClientConfig,
+    ): prismic.WriteClient<AllDocumentTypes>;
+  }
+
+  interface CreateMigration {
+    (): prismic.Migration<AllDocumentTypes>;
+  }
+
   namespace Content {
     export type {
       BlogpostDocument,
@@ -640,7 +903,19 @@ declare module "@prismicio/client" {
       BlogposttestDocument,
       BlogposttestDocumentData,
       BlogposttestDocumentDataSlicesSlice,
+      CategoriesDocument,
+      CategoriesDocumentData,
+      CategoriesDocumentDataSubcategoriesItem,
+      CategoryDocument,
+      CategoryDocumentData,
+      CategoryDocumentDataSubcategoriesItem,
+      GlobalmenuDocument,
+      GlobalmenuDocumentData,
       AllDocumentTypes,
+      BlogPostPreviewSlice,
+      BlogPostPreviewSliceDefaultPrimary,
+      BlogPostPreviewSliceVariation,
+      BlogPostPreviewSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceImageRightPrimary,

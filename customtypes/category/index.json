@@ -1,0 +1,55 @@
+{
+  "format": "custom",
+  "id": "category",
+  "label": "category",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "title"
+        }
+      },
+      "link": {
+        "type": "Text",
+        "config": {
+          "label": "Link",
+          "placeholder": "link"
+        }
+      },
+      "order": {
+        "type": "Number",
+        "config": {
+          "label": "Order",
+          "placeholder": "1"
+        }
+      },
+      "subcategories": {
+        "type": "Group",
+        "config": {
+          "label": "Subcategories",
+          "repeat": true,
+          "fields": {
+            "subcategory": {
+              "type": "Link",
+              "config": {
+                "label": "Subcategory",
+                "select": "document",
+                "customtypes": ["category"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

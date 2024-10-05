@@ -1,0 +1,10 @@
+{
+  "format": "custom",
+  "id": "globalmenu",
+  "json": {
+    "Main": {}
+  },
+  "label": "globalMenu",
+  "repeatable": false,
+  "status": true
+}
