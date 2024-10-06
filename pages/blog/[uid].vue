@@ -16,10 +16,10 @@ const fetchPageByUID = async (type, uid) => {
 };
 
 // Try to fetch the page from different document types in sequence
-page = await fetchPageByUID('blogpost2', route.params.uid) 
-     || await fetchPageByUID('blogposttest', route.params.uid)
-     || await fetchPageByUID('blogpost_01', route.params.uid);
-console.log(page);
+// page = await fetchPageByUID('blogpost2', route.params.uid) 
+//      || await fetchPageByUID('blogposttest', route.params.uid)
+//      || await fetchPageByUID('blogpost_01', route.params.uid);
+page = await fetchPageByUID('blogpost_01', route.params.uid);
 
 useHead({
   title: page?.value?.data.meta_title,
@@ -33,10 +33,26 @@ useHead({
 </script>
 
 <template>
-  default
   <SliceZone
     wrapper="main"
     :slices="page?.data.slices ?? []"
     :components="components"
   />
 </template>
+<style scoped>
+.header {
+  background-color: #333;
+  padding: 15px;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+</style>

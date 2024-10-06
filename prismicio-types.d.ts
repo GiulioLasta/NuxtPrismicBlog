@@ -61,11 +61,11 @@ export type BlogpostDocument<Lang extends string = string> =
 type Blogpost2DocumentDataSlicesSlice = HeroSlice;
 
 /**
- * Content for blogpost2 documents
+ * Content for OLD_blogpost2 documents
  */
 interface Blogpost2DocumentData {
   /**
-   * Slice Zone field in *blogpost2*
+   * Slice Zone field in *OLD_blogpost2*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -74,7 +74,7 @@ interface Blogpost2DocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<Blogpost2DocumentDataSlicesSlice> /**
-   * Meta Title field in *blogpost2*
+   * Meta Title field in *OLD_blogpost2*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -85,7 +85,7 @@ interface Blogpost2DocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *blogpost2*
+   * Meta Description field in *OLD_blogpost2*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -96,7 +96,7 @@ interface Blogpost2DocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *blogpost2*
+   * Meta Image field in *OLD_blogpost2*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -108,7 +108,7 @@ interface Blogpost2DocumentData {
 }
 
 /**
- * blogpost2 document from Prismic
+ * OLD_blogpost2 document from Prismic
  *
  * - **API ID**: `blogpost2`
  * - **Repeatable**: `true`
@@ -126,11 +126,11 @@ export type Blogpost2Document<Lang extends string = string> =
 type Blogpost2slicesDocumentDataSlicesSlice = TextAndImageSlice | HeroSlice;
 
 /**
- * Content for BlogPost2Slices documents
+ * Content for OLD_BlogPost2Slices documents
  */
 interface Blogpost2slicesDocumentData {
   /**
-   * Slice Zone field in *BlogPost2Slices*
+   * Slice Zone field in *OLD_BlogPost2Slices*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -139,7 +139,7 @@ interface Blogpost2slicesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<Blogpost2slicesDocumentDataSlicesSlice> /**
-   * Meta Title field in *BlogPost2Slices*
+   * Meta Title field in *OLD_BlogPost2Slices*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -150,7 +150,7 @@ interface Blogpost2slicesDocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *BlogPost2Slices*
+   * Meta Description field in *OLD_BlogPost2Slices*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -161,7 +161,7 @@ interface Blogpost2slicesDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *BlogPost2Slices*
+   * Meta Image field in *OLD_BlogPost2Slices*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -173,7 +173,7 @@ interface Blogpost2slicesDocumentData {
 }
 
 /**
- * BlogPost2Slices document from Prismic
+ * OLD_BlogPost2Slices document from Prismic
  *
  * - **API ID**: `blogpost2slices`
  * - **Repeatable**: `true`
@@ -189,6 +189,7 @@ export type Blogpost2slicesDocument<Lang extends string = string> =
   >;
 
 type Blogpost01DocumentDataSlicesSlice =
+  | ImageTextHSlice
   | BlogPostPreviewSlice
   | TextImageTextSlice;
 
@@ -196,6 +197,17 @@ type Blogpost01DocumentDataSlicesSlice =
  * Content for blogpost_01 documents
  */
 interface Blogpost01DocumentData {
+  /**
+   * blogPostCategory field in *blogpost_01*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost_01.blogpostcategory
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  blogpostcategory: prismic.ContentRelationshipField<"category">;
+
   /**
    * Slice Zone field in *blogpost_01*
    *
@@ -258,11 +270,11 @@ export type Blogpost01Document<Lang extends string = string> =
 type BlogposttestDocumentDataSlicesSlice = TextAndImageSlice;
 
 /**
- * Content for BlogPostTest documents
+ * Content for OLD_BlogPostTest documents
  */
 interface BlogposttestDocumentData {
   /**
-   * Slice Zone field in *BlogPostTest*
+   * Slice Zone field in *OLD_BlogPostTest*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -271,7 +283,7 @@ interface BlogposttestDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<BlogposttestDocumentDataSlicesSlice> /**
-   * Meta Title field in *BlogPostTest*
+   * Meta Title field in *OLD_BlogPostTest*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -282,7 +294,7 @@ interface BlogposttestDocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *BlogPostTest*
+   * Meta Description field in *OLD_BlogPostTest*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -293,7 +305,7 @@ interface BlogposttestDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *BlogPostTest*
+   * Meta Image field in *OLD_BlogPostTest*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -305,7 +317,7 @@ interface BlogposttestDocumentData {
 }
 
 /**
- * BlogPostTest document from Prismic
+ * OLD_BlogPostTest document from Prismic
  *
  * - **API ID**: `blogposttest`
  * - **Repeatable**: `true`
@@ -317,88 +329,6 @@ export type BlogposttestDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<BlogposttestDocumentData>,
     "blogposttest",
-    Lang
-  >;
-
-/**
- * Item in *categories → subCategories*
- */
-export interface CategoriesDocumentDataSubcategoriesItem {
-  /**
-   * SubCategory field in *categories → subCategories*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: categories.subcategories[].subcategory
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  subcategory: prismic.ContentRelationshipField<"categories">;
-}
-
-/**
- * Content for categories documents
- */
-interface CategoriesDocumentData {
-  /**
-   * Title field in *categories*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Title
-   * - **API ID Path**: categories.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Link field in *categories*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Link
-   * - **API ID Path**: categories.link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  link: prismic.KeyTextField;
-
-  /**
-   * Order field in *categories*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: 1
-   * - **API ID Path**: categories.order
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  order: prismic.NumberField;
-
-  /**
-   * subCategories field in *categories*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: categories.subcategories[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  subcategories: prismic.GroupField<
-    Simplify<CategoriesDocumentDataSubcategoriesItem>
-  >;
-}
-
-/**
- * categories document from Prismic
- *
- * - **API ID**: `categories`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type CategoriesDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<CategoriesDocumentData>,
-    "categories",
     Lang
   >;
 
@@ -508,7 +438,6 @@ export type AllDocumentTypes =
   | Blogpost2slicesDocument
   | Blogpost01Document
   | BlogposttestDocument
-  | CategoriesDocument
   | CategoryDocument
   | GlobalmenuDocument;
 
@@ -748,6 +677,61 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *ImageTextH → Default → Primary*
+ */
+export interface ImageTextHSliceDefaultPrimary {
+  /**
+   * Image field in *ImageTextH → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text_h.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * text field in *ImageTextH → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Lorem Ipsum dolor si amet
+   * - **API ID Path**: image_text_h.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ImageTextH Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageTextHSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageTextHSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageTextH*
+ */
+type ImageTextHSliceVariation = ImageTextHSliceDefault;
+
+/**
+ * ImageTextH Shared Slice
+ *
+ * - **API ID**: `image_text_h`
+ * - **Description**: ImageTextH
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageTextHSlice = prismic.SharedSlice<
+  "image_text_h",
+  ImageTextHSliceVariation
+>;
+
+/**
  * Primary content in *TextAndImage → Default → Primary*
  */
 export interface TextAndImageSliceDefaultPrimary {
@@ -903,9 +887,6 @@ declare module "@prismicio/client" {
       BlogposttestDocument,
       BlogposttestDocumentData,
       BlogposttestDocumentDataSlicesSlice,
-      CategoriesDocument,
-      CategoriesDocumentData,
-      CategoriesDocumentDataSubcategoriesItem,
       CategoryDocument,
       CategoryDocumentData,
       CategoryDocumentDataSubcategoriesItem,
@@ -922,6 +903,10 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceImageRight,
+      ImageTextHSlice,
+      ImageTextHSliceDefaultPrimary,
+      ImageTextHSliceVariation,
+      ImageTextHSliceDefault,
       TextAndImageSlice,
       TextAndImageSliceDefaultPrimary,
       TextAndImageSliceVariation,

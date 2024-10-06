@@ -12,11 +12,22 @@
           "label": "UID"
         }
       },
+      "blogpostcategory": {
+        "type": "Link",
+        "config": {
+          "label": "blogPostCategory",
+          "select": "document",
+          "customtypes": ["category"]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_text_h": {
+              "type": "SharedSlice"
+            },
             "blog_post_preview": {
               "type": "SharedSlice"
             },

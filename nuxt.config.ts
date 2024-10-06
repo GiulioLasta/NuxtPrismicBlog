@@ -25,6 +25,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/prismic",'@nuxt/ui'],
 
+  runtimeConfig: {
+    public: {
+      prismicRepositoryName: 'giulio-lasta',
+      prismicBlogPostDefaultType: 'blogpost_01',
+      prismicCategoryDefaultType: 'category'
+    }
+  },
+
   prismic: {
     endpoint: apiEndpoint || repositoryName
   },
