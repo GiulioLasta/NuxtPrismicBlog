@@ -1,5 +1,5 @@
 <template>
-  <div class="mouse-light" ref="light"></div>
+  <div class="mouse-light tile-sp:hidden" ref="light"></div>
 </template>
 
 <script>

@@ -1,38 +1,38 @@
 <template>
   <div class="layout">
     <!-- <Header />  Your custom header component -->
-      <Header />
+      <!-- <Header /> -->
+      <!-- <Menu /> -->
     
     <main class="content-container">
       <!-- <BlogListing /> -->
       <MouseLight />
-      <NuxtPage  />  <!-- This is where page-specific content will go -->
+      <NuxtPage  /> 
     </main>
-    <Footer />
+    <!-- <Footer /> -->
     
     <!-- <Footer />  Your custom footer component -->
   </div>
 </template>
 
 <script setup>
-// Import components like the header and footer
-import Header from '~/components/header.vue'
-import Footer from '~/components/footer.vue'
-import MouseLight from '~/components/MouseLight.vue';
-// import BlogListing from '~/components/blogListing.vue';
+  import Header from '~/components/header.vue'
+  import Footer from '~/components/footer.vue'
+  import MouseLight from '~/components/MouseLight.vue';
+  import Menu from '~/components/menu.vue';
+  import BlogListing from '~/components/blogListing.vue';
 </script>
 
-<style>
-/* General layout styling GLOBAL */
+<style lang="scss">
 
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures the layout takes full height of the screen */
+  min-height: 100vh; 
 }
 
 .content-container {
-  flex: 1; /* Allows the content to take the remaining available space */
+  flex: 1;
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -41,14 +41,14 @@ import MouseLight from '~/components/MouseLight.vue';
 
 @media (min-width: 1024px) {
   .content-container {
-    max-width: 1024px;
+    max-width: 1224px;
     margin: 0 auto;
     background-color: white;
   }
 }
 
 html {
-  background-color: #2b2a2a;
+  background-color: $dark-blue-bg;;
   font-family: Quicksand;
   color: white;
 }
@@ -56,6 +56,11 @@ html {
 main {
   width: fill-available;
   z-index: 90;
+
+  > div {
+    margin-left: 0;
+    margin-right: auto;
+  }
 }
 img.fill-available {
   width: fill-available;
@@ -64,27 +69,50 @@ img.fill-available {
   width: fill-available;
 }
 
-/*div {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}*/
-
 .content-container {
-  flex: 1; /* Makes sure the content area grows to fill available space */
+  flex: 1; 
   display: flex;
   justify-content: center;
   padding: 20px;
-  background-color: #131c2f;
+  background-color: $dark-blue-bg;
 }
 
-/* Adds spacing on the sides for large screens */
 @media (min-width: 1024px) {
   .content-container {
     max-width: 1024px;
     margin: 0 auto;
-    background-color: #131c2f; /* Center content background */
+    background-color: $dark-blue-bg; 
   }
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: 700;
 }
 
 </style>

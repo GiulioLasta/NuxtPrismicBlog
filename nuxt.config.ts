@@ -1,35 +1,39 @@
 import { apiEndpoint, repositoryName } from "./slicemachine.config.json";
 import { usePrismic } from '@prismicio/vue';
-// import { client } from '@/prismic-configuration'; // Adjust the path as necessary
 
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-// const getPostRoutes = async () => {
-//   const prismic = require("@prismicio/vue"); //usePrismic();
-//   const prismic2 = usePrismic();
-//   console.log(prismic);
-//   console.log(prismic2);
-//   console.log(prismic.usePrismic());
-//   console.log(prismic.usePrismic.client);
-
-
-  
-//   const categories = await prismic.client.getAllByType('category'); // Fetch categories
-//   categories.map(category => `/categories/${category.uid}`);
-//   return categories;
-// };
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
   modules: ["@nuxtjs/prismic",'@nuxt/ui'],
+  vite: {
+    css: {
+        preprocessorOptions: {
+          scss: {
+                additionalData: '@import "@/assets/style/global.scss";',
+            },
+        },
+    },
+  },
+
 
   runtimeConfig: {
     public: {
       prismicRepositoryName: 'giulio-lasta',
       prismicBlogPostDefaultType: 'blogpost_01',
-      prismicCategoryDefaultType: 'category'
+      prismicCategoryDefaultType: 'category',
+      homePageUid: 'home'
     }
   },
 

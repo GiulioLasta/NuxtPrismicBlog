@@ -1,10 +1,18 @@
-export const truncateText = (text, max = 30) => {
+export const truncateText = (text, max = 70) => {
   if(text == null)
     return "";
 
-  if (text.length > max) {
+  if (checkIfString(text) && text.length > max) {
     return text.slice(0, max) + '...';
   }
+
+  if(checkIfObject(text)) {
+    if(text.length > 0 && text[0].type == "paragraph") {
+      text[0].text = text[0].text.slice(0, max) + '...';
+      return text;
+    }
+  }
+
   return text;
 };
 
@@ -37,27 +45,63 @@ import { usePrismic } from '@prismicio/vue';
  * @returns {object} - The category
  */
 export const getCategoryByName = async (str) => {
-  const prismic = usePrismic();
-  const runtimeConfig = useRuntimeConfig();
-  const categoryDefaultType = runtimeConfig.public.prismicCategoryDefaultType;
-  // const client = prismicC.createClient(runtimeConfig.public.prismicRepositoryName);
-  // const category = ref(null);
-  
-  const filters = [
-    prismic.filter.at('document.type', categoryDefaultType),
-    prismic.filter.at('document.uid', str),
-  ];
+  if(str && checkIfString(str)) {
+    const prismic = usePrismic();
+    const runtimeConfig = useRuntimeConfig();
+    const categoryDefaultType = runtimeConfig.public.prismicCategoryDefaultType;
+    
+    // const filters = [
+    //   prismic.filter.at('document.type', categoryDefaultType),
+    //   prismic.filter.at('document.uid', str),
+    // ];
 
-  const page = await prismic.client.getByUID(categoryDefaultType, str);
-  return page;
-  // fetch documents of type [blogPostDefaultType] and with a tag F it is passed
-  // const result = await client.get({ 
-  //   pageSize: 1, // Fetch only one document
-  //   filters: filters,
-  // });
-  // .then(result => {
-  //   category.value = result.results;
-  //   return category;
-  // });
-  // return result.results[0];
+    return await prismic.client.getByUID(categoryDefaultType, str);
+  } else {
+    return null;
+  }
+};
+
+
+
+/**
+ * Checks if variable is a string.
+ * @param {object} thing - The string to capitalize.
+ * @returns {boolean} - The capitalized string.
+ */
+export const checkIfString = (thing) => {
+  return typeof thing == "string";
+};
+/**
+ * Checks if variable is an integer.
+ * @param {object} thing - The string to capitalize.
+ * @returns {boolean} - The capitalized string.
+ */
+export const checkIfInteger = (thing) => {
+  return typeof thing == "number";
+};
+/**
+ * Checks if variable is a boolean.
+ * @param {object} thing - The string to capitalize.
+ * @returns {boolean} - The capitalized string.
+ */
+export const checkIfBoolean = (thing) => {
+  return typeof thing == "boolean";
+};
+
+/**
+ * Checks if variable is an array.
+ * @param {object} thing - The string to capitalize.
+ * @returns {boolean} - The capitalized string.
+ */
+// export const checkIfArray = (thing) => {
+//   return typeof thing == "Array";
+// };
+
+/**
+ * Checks if variable is an object.
+ * @param {object} thing - The string to capitalize.
+ * @returns {boolean} - The capitalized string.
+ */
+export const checkIfObject = (thing) => {
+  return typeof thing == "object";
 };

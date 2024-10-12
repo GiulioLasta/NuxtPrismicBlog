@@ -20,6 +20,11 @@
   "devDependencies": {
     "@nuxtjs/prismic": "^3.4.3",
     "@slicemachine/adapter-nuxt": "^0.3.51",
-    "slice-machine-ui": "^2.8.1"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "sass": "^1.79.5",
+    "sass-loader": "^16.0.2",
+    "slice-machine-ui": "^2.8.1",
+    "tailwindcss": "^3.4.13"
   }
 }
