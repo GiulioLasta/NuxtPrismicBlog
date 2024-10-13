@@ -15,8 +15,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
-  modules: ["@nuxtjs/prismic",'@nuxt/ui'],
+  modules: ["@nuxtjs/prismic", '@nuxt/ui', 'nuxt-icons'],
   vite: {
     css: {
         preprocessorOptions: {
@@ -26,6 +25,16 @@ export default defineNuxtConfig({
         },
     },
   },
+
+  icon: {
+    customCollections: [
+      {
+        prefix: 'my-icon',
+        dir: './assets/icons'
+      },
+    ],
+  },
+
 
 
   runtimeConfig: {

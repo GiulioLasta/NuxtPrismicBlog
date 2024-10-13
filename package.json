@@ -11,9 +11,11 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.5.6",
     "@nuxt/ui": "^2.18.6",
     "@prismicio/client": "^7.11.0",
     "nuxt": "^3.13.0",
+    "nuxt-icons": "^3.2.1",
     "vue": "latest",
     "vue-router": "latest"
   },
