@@ -4,9 +4,9 @@
     
     <div v-if="loading">Loading...</div>
     <div v-else>
-      <div v-if="posts && posts?.length">
-        <div v-for="post in posts" :key="post?.id">
-          <div v-for="slice in post.data.slices" :key="slice?.id">
+      <div v-if="posts && posts?.length" class="w-fit mx-auto">
+        <div v-for="post in posts" :key="post?.id" class="w-fit">
+          <div v-for="slice in post.data.slices" :key="slice?.id" class="w-fit">
             <div v-if="slice.slice_type == 'blog_post_preview'" class="post-preview">
               <nuxt-link :to="`/blog/${post?.uid}`">
                 <img :src="slice?.primary?.blogpostimagepreview.url" class="tile-sp:hidden" alt="Thumbnail" v-if="slice?.primary?.blogpostimagepreview.url" width="200px" height="100px" />

@@ -33,7 +33,6 @@ useHead({
 </script>
 
 <template>
-  default
   <SliceZone
     wrapper="main"
     :slices="page?.data.slices ?? []"

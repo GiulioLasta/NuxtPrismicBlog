@@ -4,7 +4,7 @@
       <ul v-if="menu && menu?.length">
         <li v-for="menu_item in menu">
           <!-- <a :href="menu_item.data.link" target="_blank" rel="noopener noreferrer">{{ menu_item.data.title }}</a> -->
-          <NuxtLink :to="`/categories/${menu_item.uid}`">
+          <NuxtLink :to="menu_item.uid === homeUidCategory ? `/` : `/categories/${menu_item.uid}`">
             {{ menu_item.data.title }}
           </NuxtLink>
 
@@ -25,31 +25,16 @@
 </template>
 
 <script setup lang="ts">
-// const open = ref(true)
-// const items = [
-//   [{
-//     label: 'Profile',
-//     avatar: {
-//       src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-//     }
-//   }]
-// ]
+  import { usePrismic } from '@prismicio/vue';
 
+  const runtimeConfig = useRuntimeConfig();
+  const homeUidCategory = runtimeConfig.public.homePageUid;
 
-import { usePrismic } from '@prismicio/vue';
-import { truncateText } from '~/utils/global';
+  const prismic = usePrismic();
 
-const prismic = usePrismic();
-
-const { data: menu } = await useAsyncData('category', () =>
-  prismic.client.getAllByType('category')
-);
-
-// const data2 = 
-// remodel data from api call to fit menu ui component
-
-console.log(menu);
-
+  const { data: menu } = await useAsyncData('category', () =>
+    prismic.client.getAllByType('category')
+  );
 </script>
 
 <style scoped>

@@ -1,37 +1,20 @@
 <template>
   <div>
-    <button class="hamburge-menu lg:hidden float-right" @click="buttonClick">
+    <button class="hamburge-menu lg:hidden float-right my-4 mr-4 relative z-[110]" @click="toggleMenu">
       <nuxt-icon name="hamburgerButton" class="hamburgerButton" style="color: white" />
     </button>
 
     <Transition name="modal">
-      <div v-if="showMobileMenu" class="bg-green-400 w-80 h-screen absolute top-0 right-0 z-50">
-        
-        <button class="hamburge-menu lg:hidden absolute right-5 top-5" @click="buttonClick">
+      <div v-if="showMobileMenu" class="bg-green-400 w-80 h-screen absolute top-0 right-0 z-[110]">
+        <button class="hamburge-menu lg:hidden absolute right-5 top-5" @click="toggleMenu">
           <nuxt-icon name="hamburgerButton" class="hamburgerButton" style="color: white" />
         </button>
         <nav class="w-full my-10">
-          <ul class="flex flex-col text-center">
-            <li>
-              <a
-                class="hover:bg-green-500 p-6 block"
-              >
-                Category 1
-              </a>
-            </li>
-            <li>
-              <a
-                class="hover:bg-green-500 p-6 block"
-              >
-                Category 3
-              </a>
-            </li>
-            <li>
-              <a
-                class="hover:bg-green-500 p-6 block"
-              >
-                Category 2
-              </a>
+          <ul v-if="menu && menu.length" class="flex flex-col text-center">
+            <li v-for="(item, index) in menu" :key="index">
+              <NuxtLink :to="item.uid === homeUidCategory  ? '/' : `/categories/${item.uid}`">
+                {{ item.data?.title }} <!-- Assuming each item has a name -->
+              </NuxtLink>
             </li>
           </ul>
         </nav>
@@ -40,34 +23,43 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { ref, watch } from 'vue';
+import { usePrismic } from '@prismicio/vue';
+// import { useAsyncData, useRuntimeConfig } from '@nuxtjs/composition-api';
 
-export default {
-  props: {
-   
-  },
-  data () {
-    return {
-      showMobileMenu: false
-    }
-  },
-  async setup(props) {
-    const mobileMenuIsOpen = false;
-     
-  },
-  methods: {
-    buttonClick() {
-      //  = !mobileMenuIsOpen;
-      console.log('buttonClick');
+// Reactive states
+const showMobileMenu = ref(false);
+const menu = ref([]);
 
-      this.showMobileMenu = !this.showMobileMenu;
-    },
-  }
+// Prismic client and runtime config
+const prismic = usePrismic();
+const runtimeConfig = useRuntimeConfig();
+const homeUidCategory = runtimeConfig.public.homePageUid;
+const route = useRoute();  // Get the current route
+
+// Asynchronous data fetching inside setup
+const { data } = await useAsyncData('category', () => prismic.client.getAllByType('category'));
+
+// Check if the data was fetched and update menu
+if (data.value) {
+  menu.value = data.value;
 }
+
+// on route change, close the offcanvas
+watch(route, (newRoute, oldRoute) => {
+  if(showMobileMenu.value)
+    toggleMenu();
+});
+
+
+// Method to toggle the mobile menu
+const toggleMenu = () => {
+  showMobileMenu.value = !showMobileMenu.value;
+};
 </script>
 
 <style scoped>
-
 /* Entering animation */
 .modal-enter-active {
   @apply duration-700;
@@ -91,6 +83,4 @@ export default {
 .modal-leave-to {
   @apply translate-x-full; /* End off-screen */
 }
-
-
 </style>

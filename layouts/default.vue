@@ -1,26 +1,24 @@
 <template>
+  
+  <MenuResponsive />
+  <Menu />
+
   <div class="layout">
-    <!-- <Header />  Your custom header component -->
-      <!-- <Header /> -->
-      <!-- <Menu /> -->
-    
     <main class="content-container">
-      <!-- <BlogListing /> -->
       <MouseLight />
-      <NuxtPage  /> 
+      <NuxtPage /> 
     </main>
-    <!-- <Footer /> -->
-    
     <!-- <Footer />  Your custom footer component -->
   </div>
 </template>
 
 <script setup>
-  import Header from '~/components/header.vue'
-  import Footer from '~/components/footer.vue'
+  // import Header from '~/components/header.vue'
+  // import Footer from '~/components/footer.vue'
   import MouseLight from '~/components/MouseLight.vue';
   import Menu from '~/components/menu.vue';
-  import BlogListing from '~/components/blogListing.vue';
+  import MenuResponsive from '~/components/menuResponsive.vue';
+  // import BlogListing from '~/components/blogListing.vue';
 </script>
 
 <style lang="scss">
@@ -29,22 +27,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh; 
-}
-
-.content-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f9f9f9;
-}
-
-@media (min-width: 1024px) {
-  .content-container {
-    max-width: 1224px;
-    margin: 0 auto;
-    background-color: white;
-  }
 }
 
 html {
@@ -79,7 +61,7 @@ img.fill-available {
 
 @media (min-width: 1024px) {
   .content-container {
-    max-width: 1024px;
+    max-width: 1400px;
     margin: 0 auto;
     background-color: $dark-blue-bg; 
   }

@@ -19,36 +19,25 @@ defineProps(
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
   >
-    <!-- Placeholder component for text_image_text (variation: {{ slice.variation }})
-    Slices -->
-
-
-    <div
-      class="es-fullpage-hero__content"
-      :class="
-        slice.variation === 'default'
-          ? 'es-fullpage-hero__image--right'
-          : 'es-fullpage-hero__image--left'
-      "
-    >
-    <div class="es-fullpage-hero__content-right">
-      <div class="es-fullpage-hero__content__intro" >
-        <PrismicRichText :field="slice.primary.firstrichtext" v-if="slice.primary.firstrichtext" />
+    <div>
+      <div class="">
+        <div class="" >
+          <PrismicRichText :field="slice.primary.firstrichtext" v-if="slice.primary.firstrichtext" />
+        </div>
       </div>
-    </div>
 
       <div>
         <PrismicImage
           v-if="isFilled.image(slice.primary.image)"
           :field="slice.primary.image"
-          class="es-fullpage-hero__image"
+          class="max-w-5xl w-full my-4"
         />
       </div>
       
     </div>
 
-    <div class="es-fullpage-hero__content-right">
-      <div class="es-fullpage-hero__content__intro">
+    <div class="my-4">
+      <div class="">
         <PrismicRichText :field="slice.primary.firstrichtext2" v-if="slice.primary.firstrichtext2" />
       </div>
     </div>
@@ -58,20 +47,6 @@ defineProps(
 </template>
 
 <style scoped>
-.header {
-  background-color: #333;
-  padding: 15px;
-}
 
-.header nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-}
-
-.header nav ul li a {
-  color: white;
-  text-decoration: none;
-}
 </style>
 

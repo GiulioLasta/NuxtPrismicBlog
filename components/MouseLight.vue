@@ -10,13 +10,10 @@ export default {
 
     myDiv.addEventListener('mouseenter', () => {
       mouseLight.style.opacity = '0';
-      // mouseLight.style.display = 'none';
     });
     myDiv.addEventListener('mouseleave', () => {
       mouseLight.style.opacity = '1';
-      // mouseLight.style.display = 'none';
     });
-
 
     document.addEventListener('mousemove', (e) => {
       mouseLight.style.top = `${e.pageY}px`;

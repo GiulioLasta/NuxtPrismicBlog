@@ -31,7 +31,7 @@ defineProps(
         <PrismicImage
           v-if="isFilled.image(slice.primary.image)"
           :field="slice.primary.image"
-          class="es-fullpage-hero__image"
+          class="es-fullpage-hero__image max-w-5xl"
         />
       </div>
       <div class="es-fullpage-hero__content-right">

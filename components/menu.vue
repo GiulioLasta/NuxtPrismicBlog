@@ -1,7 +1,13 @@
 <template>
-  <header class="header">
+  <header class="header tile-sp:hidden">
     <nav>
-      <ul v-if="menu && menu?.length">
+      <NuxtLink :to="'/'" class="ml-2.5">
+        Giulio Lasta
+      </NuxtLink>
+      <NuxtLink :to="`/categories`" class="float-right ml-2.5	">
+        Categories
+      </NuxtLink>
+      <!-- <ul v-if="menu && menu?.length">
         <li v-for="menu_item in menu">
           <NuxtLink :to="menu_item.uid === homeUidCategory  ? '/' : `/categories/${menu_item.uid}`">
             {{ menu_item.data.title }}
@@ -15,22 +21,22 @@
 
         </li>
       </ul>
+     -->
     </nav>
   </header>
 
 </template>
 
 <script setup lang="ts">
-import { usePrismic } from '@prismicio/vue';
-import { truncateText } from '~/utils/global';
+  import { usePrismic } from '@prismicio/vue';
 
-const prismic = usePrismic();
-const runtimeConfig = useRuntimeConfig();
-const homeUidCategory = runtimeConfig.public.homePageUid;
+  const prismic = usePrismic();
+  // const runtimeConfig = useRuntimeConfig();
+  // const homeUidCategory = runtimeConfig.public.homePageUid;
 
-const { data: menu } = await useAsyncData('category', () =>
-  prismic.client.getAllByType('category')
-);
+  const { data: menu } = await useAsyncData('category', () =>
+    prismic.client.getAllByType('category')
+  );
 
 </script>
 

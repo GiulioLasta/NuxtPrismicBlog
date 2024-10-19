@@ -20,25 +20,19 @@ defineProps(
     :data-slice-variation="slice.variation"
   >
     
-    <div class="image-text-h-cnt">
+    <div class="md:flex xs:block image-text-h-cnt">
       <PrismicImage
           v-if="isFilled.image(slice.primary.image)"
           :field="slice.primary.image"
-          class=""
+          class="mr-3 max-w-5xl my-4"
       />
 
-      <PrismicRichText :field="slice.primary.text" v-if="slice.primary.text" />
+      <PrismicRichText :field="slice.primary.text" v-if="slice.primary.text" class="my-4"/>
     </div>
   </section>
 </template>
 
 <style scoped>
-.image-text-h-cnt {
-  display: flex;
 
-  > img {
-    margin-right: 10px;
-  }
-}
 
 </style>
