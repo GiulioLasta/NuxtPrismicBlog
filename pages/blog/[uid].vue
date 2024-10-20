@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { components } from "~/slices";
+// import TextSelector from "~/components/TextSelector.vue";
+import NewsLetter from '~/components/newsLetter.vue';
 
 const prismic = usePrismic();
 const route = useRoute();
@@ -33,11 +35,15 @@ useHead({
 </script>
 
 <template>
-  <SliceZone
-    wrapper="main"
-    :slices="page?.data.slices ?? []"
-    :components="components"
-  />
+  <div>
+    <NewsLetter></NewsLetter>
+    <!-- <TextSelector></TextSelector> -->
+    <SliceZone
+      wrapper="main"
+      :slices="page?.data.slices ?? []"
+      :components="components"
+    />
+  </div>
 </template>
 <style scoped>
 .header {

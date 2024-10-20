@@ -26,6 +26,12 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
+    }
+  },
+
   icon: {
     customCollections: [
       {
@@ -61,38 +67,7 @@ export default defineNuxtConfig({
   },
   target: 'server',
   ssr: true,
-  // hooks: {
-  //   async 'nitro:config'(nitroConfig) {
-  //     const slugs = await getPostRoutes();
-  //     nitroConfig.prerender.routes.push([]);
-  //   },
-  // },
-
-  // generate: {
-  //   fallback: true, // This enables a fallback for 404 pages when using static hosting (Netlify, Vercel, etc.)
-  //   routes: async () => {
-  //       const categories = await client().getAllByType('category');
-        
-  //       return categories.map(category => `/categories/${category.uid}`);
-  //     // return [];
-
-  //     // const prismic = usePrismic();
-
-  //     // try {
-  //     //   const categories = await prismic.client.getAllByType('category'); // Fetch categories
-
-  //     //   // Generate routes for all categories
-  //     //   return categories.map(category => `/categories/${category.uid}`);
-  //     // } catch (error) {
-  //     //   console.error('Error fetching categories:', error);
-  //     //   return []; // Return an empty array in case of error
-  //     // }
-  //   }
-  // }
+  
 
 
 })
-
-// <link rel="preconnect" href="https://fonts.googleapis.com">
-// <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-// <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
