@@ -3,6 +3,9 @@ import { components } from "~/slices";
 // import TextSelector from "~/components/TextSelector.vue";
 import NewsLetter from '~/components/newsLetter.vue';
 
+
+defineProps(['page']);
+
 const prismic = usePrismic();
 const route = useRoute();
 let page = null;
@@ -17,11 +20,10 @@ const fetchPageByUID = async (type, uid) => {
   }
 };
 
-// Try to fetch the page from different document types in sequence
-// page = await fetchPageByUID('blogpost2', route.params.uid) 
-//      || await fetchPageByUID('blogposttest', route.params.uid)
-//      || await fetchPageByUID('blogpost_01', route.params.uid);
 page = await fetchPageByUID('blogpost_01', route.params.uid);
+
+console.log("ID page blog");
+console.log(page);
 
 useHead({
   title: page?.value?.data.meta_title,
