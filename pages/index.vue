@@ -3,7 +3,14 @@
 </script>
 
 <template>
-  <div>
+  <div class="fill-available-mobile">
     <BlogListing />
   </div>
 </template>
+
+<style scoped>
+  .fill-available-mobile {
+    width: -webkit-fill-available;
+  }
+
+</style>

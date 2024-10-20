@@ -33,6 +33,8 @@ defineProps(
 </template>
 
 <style scoped>
-
+  img {
+    width: -webkit-fill-available;
+  }
 
 </style>

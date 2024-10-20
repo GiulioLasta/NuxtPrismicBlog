@@ -37,7 +37,7 @@ useHead({
 </script>
 
 <template>
-  <div>
+  <div class="fill-available-mobile">
     <NewsLetter></NewsLetter>
     <!-- <TextSelector></TextSelector> -->
     <SliceZone
@@ -48,6 +48,11 @@ useHead({
   </div>
 </template>
 <style scoped>
+
+.fill-available-mobile {
+    width: -webkit-fill-available;
+}
+
 .header {
   background-color: #333;
   padding: 15px;
