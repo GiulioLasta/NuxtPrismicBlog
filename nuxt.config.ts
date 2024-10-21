@@ -27,73 +27,15 @@ export default defineNuxtConfig({
         },
     },
   },
-  // generate: {
-  //   async routes() {
-  //     // const prismic = usePrismic();
-  //     const client = prismic.createClient('https://giulio-lasta.prismic.io/api/v2', {
-  //       accessToken: 'MC5adTdVQmhFQUFDd0FqOU9s.77-9Gu-_vSAU77-977-977-9Nu-_ve-_ve-_vTYPdhrvv73vv73vv70ddwIxFFzvv70_YWzvv71BZA',  // Optional, only needed for private repos
-  //     });
 
-  //     // Fetch all blog posts from Prismic
-  //     const posts = await client.getAllByType('blogpost_01');
+  render: {
+    static: {
+      setHeaders(res) {
+        res.setHeader('Cache-Control', 'public, max-age=3600') // Cache for 1 hour
+      }
+    }
+  },
 
-  //     // Return an array of routes to generate
-  //     return posts.map(post => `/blogpost2/${post.uid}`);
-  //   }
-  // },
-
-  // hooks: {
-  //   async "prerender:routes"(ctx) {
-
-  //     const client = prismic.createClient('https://giulio-lasta.prismic.io/api/v2', {
-  //         accessToken: 'MC5adTdVQmhFQUFDd0FqOU9s.77-9Gu-_vSAU77-977-977-9Nu-_ve-_ve-_vTYPdhrvv73vv73vv70ddwIxFFzvv70_YWzvv71BZA',  // Optional, only needed for private repos
-  //       });
-
-        
-
-  //       client.get({ 
-  //         orderings: {
-  //           field: 'document.first_publication_date',
-  //           direction: 'desc',
-  //         },
-  //         pageSize: 100, // Fetch up to 100 posts
-  //         filters: prismic.filter.at('document.type', 'blogpost_01'),
-  //       }).then(result => {
-
-  //         console.log('then');
-  //         console.log(result.results);
-
-
-  //         if(result.results) {
-  //           for (const page of result.results) {
-  //             ctx.routes.add(`/${page.uid}`);
-  //           }
-  //         }
-           
-  //       });
-
-  //     // const { posts } = await client.getAllByType('blogpost_01');
-
-  //     // console.log('after');
-  //     // console.log(posts);
-
-  //     // for (const page of posts) {
-  //     //   ctx.routes.add(`/${page.name}`);
-  //     // }
-  //   },
-  // },
-
-
-
-
-  // nitro: {
-  //   prerender: {
-  //     autoSubfolderIndex: false,
-  //     crawlLinks: true,
-  //     routes: ["/"],
-  //     ignore: ["/api", "/feedback"]
-  //   }
-  // },
 
   icon: {
     customCollections: [
@@ -130,7 +72,11 @@ export default defineNuxtConfig({
   },
   target: 'static',
   ssr: false,
-  
-
-
+  // generate: {
+  //   fallback: true,
+  //   cache: {
+  //     max: 1000,
+  //     maxAge: 9000000 // 15 minutes
+  //   }
+  // }
 })
