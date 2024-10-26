@@ -5,7 +5,7 @@
 
   <div class="layout">
     <main class="content-container">
-      <MouseLight />
+      <!-- <MouseLight /> -->
       <NuxtPage /> 
     </main>
     <!-- <Footer />  Your custom footer component -->
@@ -15,7 +15,7 @@
 <script setup>
   // import Header from '~/components/header.vue'
   // import Footer from '~/components/footer.vue'
-  import MouseLight from '~/components/MouseLight.vue';
+  // import MouseLight from '~/components/MouseLight.vue';
   import Menu from '~/components/menu.vue';
   import MenuResponsive from '~/components/menuResponsive.vue';
   // import BlogListing from '~/components/blogListing.vue';
@@ -65,6 +65,10 @@ img.fill-available {
     margin: 0 auto;
     background-color: $dark-blue-bg; 
   }
+}
+
+p {
+  font-size: 19px;
 }
 
 h1 {

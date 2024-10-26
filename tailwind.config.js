@@ -2,10 +2,12 @@
 export default {
   content: [
     "./components/**/*.{js,vue,ts}",
+    "./components/*.{js,vue,ts}",
     "./layouts/*.vue",
     "./pages/*.vue",
+    "./pages/**/*.vue",
     "./slices/**/*.vue",
-    "./customTypes/*.{js,vue,ts}",
+    "./customTypes/**/*.{js,vue,ts}",
     "./app.vue",
     "./error.vue",
   ],
@@ -54,13 +56,14 @@ export default {
       'xs': '1px',
       'sm': '640px',
       'md': '767px',
+      'screen-md': '767px',
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
     },
-    maxWidth: {
-      '5xl': '64rem',  // 1024px
-    }
+    // maxWidth: {
+    //   '5xl': '64rem',  // 1024px
+    // }
 
   },
   plugins: [],

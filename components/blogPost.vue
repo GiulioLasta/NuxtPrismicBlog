@@ -39,3 +39,7 @@ useHead({
     :components="components"
   />
 </template>
+
+<style scoped>
+
+</style>

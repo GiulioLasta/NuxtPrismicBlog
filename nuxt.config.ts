@@ -10,14 +10,15 @@ import * as prismic from '@prismicio/client';
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/tailwind.css'],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  modules: ["@nuxtjs/prismic", '@nuxt/ui', 'nuxt-icons'],
+  buildModules: ['@nuxtjs/tailwindcss'],
+  modules: ["@nuxtjs/prismic", '@nuxt/ui', 'nuxt-icons', '@nuxtjs/tailwindcss', '@nuxtjs/seo'],
   vite: {
     css: {
         preprocessorOptions: {
@@ -27,16 +28,13 @@ export default defineNuxtConfig({
         },
     },
   },
-
-  render: {
-    static: {
-      setHeaders(res) {
-        res.setHeader('Cache-Control', 'public, max-age=3600') // Cache for 1 hour
-      }
-    }
-  },
-
-
+  // render: {
+  //   static: {
+  //     setHeaders(res) {
+  //       res.setHeader('Cache-Control', 'public, max-age=3600') // Cache for 1 hour
+  //     }
+  //   }
+  // },
   icon: {
     customCollections: [
       {
@@ -45,9 +43,6 @@ export default defineNuxtConfig({
       },
     ],
   },
-
-
-
   runtimeConfig: {
     public: {
       prismicRepositoryName: 'giulio-lasta',
@@ -56,7 +51,6 @@ export default defineNuxtConfig({
       homePageUid: 'home'
     }
   },
-
   prismic: {
     endpoint: apiEndpoint || repositoryName
   },
@@ -72,11 +66,17 @@ export default defineNuxtConfig({
   },
   target: 'static',
   ssr: false,
-  // generate: {
-  //   fallback: true,
-  //   cache: {
-  //     max: 1000,
-  //     maxAge: 9000000 // 15 minutes
-  //   }
-  // }
+  sitemap: {
+    urls: async () => {
+      return ['/blog/prismicblog', '/blog/self-hosting-web-app', '/blog/header-with-points'];
+    }
+  }
+
+  generate: {
+    fallback: true,
+    cache: {
+      max: 1000,
+      maxAge: 9000000 // 15 minutes
+    }
+  }
 })

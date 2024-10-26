@@ -835,9 +835,110 @@ export type TextImageTextSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TextImageText → TextImageText - SmallImageLeft → Primary*
+ */
+export interface TextImageTextSliceTextImageTextSmallImageLeftPrimary {
+  /**
+   * FirstRichText field in *TextImageText → TextImageText - SmallImageLeft → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: FirstRichText
+   * - **API ID Path**: text_image_text.textImageTextSmallImageLeft.primary.firstrichtext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  firstrichtext: prismic.RichTextField;
+
+  /**
+   * Image field in *TextImageText → TextImageText - SmallImageLeft → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_text.textImageTextSmallImageLeft.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * FirstRichText2 field in *TextImageText → TextImageText - SmallImageLeft → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: FirstRichText2
+   * - **API ID Path**: text_image_text.textImageTextSmallImageLeft.primary.firstrichtext2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  firstrichtext2: prismic.RichTextField;
+}
+
+/**
+ * TextImageText - SmallImageLeft variation for TextImageText Slice
+ *
+ * - **API ID**: `textImageTextSmallImageLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageTextSliceTextImageTextSmallImageLeft =
+  prismic.SharedSliceVariation<
+    "textImageTextSmallImageLeft",
+    Simplify<TextImageTextSliceTextImageTextSmallImageLeftPrimary>,
+    never
+  >;
+
+/**
+ * Primary content in *TextImageText → TextImageText-VerySmallImage → Primary*
+ */
+export interface TextImageTextSliceTextImageTextVerySmallImagePrimary {
+  /**
+   * FirstRichText field in *TextImageText → TextImageText-VerySmallImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: FirstRichText
+   * - **API ID Path**: text_image_text.textImageTextVerySmallImage.primary.firstrichtext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  firstrichtext: prismic.RichTextField;
+
+  /**
+   * Image field in *TextImageText → TextImageText-VerySmallImage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_text.textImageTextVerySmallImage.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * FirstRichText2 field in *TextImageText → TextImageText-VerySmallImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: FirstRichText2
+   * - **API ID Path**: text_image_text.textImageTextVerySmallImage.primary.firstrichtext2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  firstrichtext2: prismic.RichTextField;
+}
+
+/**
+ * TextImageText-VerySmallImage variation for TextImageText Slice
+ *
+ * - **API ID**: `textImageTextVerySmallImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageTextSliceTextImageTextVerySmallImage =
+  prismic.SharedSliceVariation<
+    "textImageTextVerySmallImage",
+    Simplify<TextImageTextSliceTextImageTextVerySmallImagePrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *TextImageText*
  */
-type TextImageTextSliceVariation = TextImageTextSliceDefault;
+type TextImageTextSliceVariation =
+  | TextImageTextSliceDefault
+  | TextImageTextSliceTextImageTextSmallImageLeft
+  | TextImageTextSliceTextImageTextVerySmallImage;
 
 /**
  * TextImageText Shared Slice
@@ -913,8 +1014,12 @@ declare module "@prismicio/client" {
       TextAndImageSliceDefault,
       TextImageTextSlice,
       TextImageTextSliceDefaultPrimary,
+      TextImageTextSliceTextImageTextSmallImageLeftPrimary,
+      TextImageTextSliceTextImageTextVerySmallImagePrimary,
       TextImageTextSliceVariation,
       TextImageTextSliceDefault,
+      TextImageTextSliceTextImageTextSmallImageLeft,
+      TextImageTextSliceTextImageTextVerySmallImage,
     };
   }
 }

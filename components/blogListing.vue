@@ -7,7 +7,7 @@
       <div v-if="posts && posts?.length" class="w-fit mx-auto">
         <div v-for="post in posts" :key="post?.id" class="w-fit">
           <div v-for="slice in post.data.slices" :key="slice?.id" class="w-fit">
-            <div v-if="slice.slice_type == 'blog_post_preview'" class="post-preview">
+            <div v-if="slice.slice_type == 'blog_post_preview'" class="post-preview hover:translate-y-[-5px]">
               <nuxt-link :to="`/blog/${post?.uid}`">
                 <img :src="slice?.primary?.blogpostimagepreview.url" class="tile-sp:hidden" alt="Thumbnail" v-if="slice?.primary?.blogpostimagepreview.url" width="200px" height="100px" />
               </nuxt-link>

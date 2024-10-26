@@ -23,12 +23,14 @@
   },
   "devDependencies": {
     "@nuxtjs/prismic": "^3.4.3",
-    "@slicemachine/adapter-nuxt": "^0.3.51",
+    "@nuxtjs/seo": "^2.0.0-rc.23",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@slicemachine/adapter-nuxt": "^0.3.53",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "sass": "^1.79.5",
     "sass-loader": "^16.0.2",
-    "slice-machine-ui": "^2.8.1",
+    "slice-machine-ui": "^2.9.1",
     "tailwindcss": "^3.4.13"
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <header class="header tile-sp:hidden">
-    <nav>
+    <nav class="max-w-4xl	m-auto">
       <NuxtLink :to="'/'" class="ml-2.5">
         Giulio Lasta
       </NuxtLink>

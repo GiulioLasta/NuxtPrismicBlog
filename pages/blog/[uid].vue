@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { components } from "~/slices";
 // import TextSelector from "~/components/TextSelector.vue";
-import NewsLetter from '~/components/newsLetter.vue';
-
+// import NewsLetter from '~/components/newsLetter.vue';
 
 defineProps(['page']);
 
@@ -22,9 +21,6 @@ const fetchPageByUID = async (type, uid) => {
 
 page = await fetchPageByUID('blogpost_01', route.params.uid);
 
-console.log("ID page blog");
-console.log(page);
-
 useHead({
   title: page?.value?.data.meta_title,
   meta: [
@@ -37,8 +33,9 @@ useHead({
 </script>
 
 <template>
-  <div class="fill-available-mobile">
-    <NewsLetter></NewsLetter>
+
+  <div class="fill-available-mobile max-w-screen-md mx-auto">
+    <!-- <NewsLetter></NewsLetter> -->
     <!-- <TextSelector></TextSelector> -->
     <SliceZone
       wrapper="main"
