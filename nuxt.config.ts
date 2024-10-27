@@ -70,8 +70,7 @@ export default defineNuxtConfig({
     urls: async () => {
       return ['/blog/prismicblog', '/blog/self-hosting-web-app', '/blog/header-with-points'];
     }
-  }
-
+  },
   generate: {
     fallback: true,
     cache: {
