@@ -84,7 +84,8 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/blog/prismicblog',
-        '/your-dynamic-path/page-2',
+        '/blog/self-hosting-web-app',
+        '/blog/header-with-points',
         // Add other static paths
       ]
 
