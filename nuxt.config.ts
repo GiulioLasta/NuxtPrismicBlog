@@ -10,7 +10,10 @@ import * as prismic from '@prismicio/client';
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  site: { url: 'www.giulio-lasta.com' },
+  site: { 
+    url: 'www.giulio-lasta.com',
+    name: 'Giulio Lasta\'s Blog'  
+  },
   css: ['~/assets/css/main.css', '~/assets/css/tailwind.css'],
   postcss: {
     plugins: {
@@ -19,7 +22,7 @@ export default defineNuxtConfig({
     },
   },
   buildModules: ['@nuxtjs/tailwindcss'],
-  modules: ["@nuxtjs/prismic", '@nuxt/ui', 'nuxt-icons', '@nuxtjs/tailwindcss', '@nuxtjs/seo'],
+  modules: ["@nuxtjs/prismic", '@nuxt/ui', 'nuxt-icons', '@nuxtjs/tailwindcss', '@nuxtjs/seo', 'nuxt-og-image'],
   vite: {
     css: {
         preprocessorOptions: {

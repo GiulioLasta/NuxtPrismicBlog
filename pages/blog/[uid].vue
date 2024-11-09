@@ -22,14 +22,25 @@ const fetchPageByUID = async (type, uid) => {
 page = await fetchPageByUID('blogpost_01', route.params.uid);
 
 useHead({
-  title: page?.value?.data.meta_title,
+  title: page?.data.meta_title,
   meta: [
     {
       name: "description",
-      content: page?.value?.data.meta_description,
+      content: page?.data.meta_description,
     },
   ],
 });
+
+useSeoMeta({
+  title: page?.data.meta_title,
+  ogTitle: page?.data.meta_title,
+  description: page?.data.meta_description,
+  ogDescription: page?.data.meta_description,
+  ogImage: page?.data.meta_image?.url,
+  // twitterCard: "summary_large_image',
+})
+
+
 </script>
 
 <template>
