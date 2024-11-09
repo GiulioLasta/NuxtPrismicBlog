@@ -81,6 +81,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
+      crawlLinks: true,
       routes: [
         '/blog/prismicblog',
         '/your-dynamic-path/page-2',
