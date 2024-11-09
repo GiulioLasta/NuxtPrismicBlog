@@ -72,7 +72,7 @@ export default defineNuxtConfig({
   ssr: false,
   sitemap: {
     urls: async () => {
-      return ['/blog/prismicblog', '/blog/self-hosting-web-app', '/blog/header-with-points'];
+      return ['/blog/prismicblog', '/blog/self-hosting-web-app', '/blog/header-with-points', '/blog/bugsinmynuxtblog'];
     }
   },
   generate: {
@@ -89,6 +89,7 @@ export default defineNuxtConfig({
         '/blog/prismicblog',
         '/blog/self-hosting-web-app',
         '/blog/header-with-points',
+        '/blog/bugsinmynuxtblog'
         // Add other static paths
       ]
 
