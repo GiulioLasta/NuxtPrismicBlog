@@ -78,17 +78,15 @@ export default defineNuxtConfig({
       max: 1000,
       maxAge: 9000000 // 15 minutes
     }
-	  // routes: () => {
-    //   return ['/blog/prismicblog'];
-    // }
   },
   nitro: {
     prerender: {
       routes: [
-        '/blog/prismicblog'
+        '/blog/prismicblog',
+        '/your-dynamic-path/page-2',
         // Add other static paths
       ]
+
     }
   }
-
 })
