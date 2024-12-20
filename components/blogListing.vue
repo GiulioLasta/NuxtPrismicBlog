@@ -32,8 +32,8 @@
     <Tile 
         :special="true"
         title="ReadLang" 
-        description="ReadLang is a powerful web application that allows users to generate text in various languages using AI, translate it seamlessly, and receive in-depth grammatical insights. With ReadLang, you can create custom content in different languages, translate it to your desired language, and analyze the grammar for deeper understanding. This tool empowers writers, educators, and content creators by making multilingual content creation simple, efficient, and accurate. Whether you need a translation, a grammatical breakdown, or just some creative writing help, ReadLang is designed to streamline the process and enhance your productivity with AI-driven tools." 
-        :languages="['VS Code', 'JSON', 'VUEjs', 'ExpressJS', 'MySQL', 'MongoDB']" 
+        description="ReadLang is a powerful web application that allows users to generate text in various languages using AI, translate it seamlessly, and receive in-depth grammatical insights. With ReadLang, you can create custom content in different languages, translate it to your desired language, and analyze the grammar for deeper understanding." 
+        :languages="['VS Code', 'JSON', 'Nuxt3', 'ExpressJS', 'OpenAI', 'MongoDB']" 
         gitLink="www.google.com" 
         exLink="www.google.com" 
         imageURL="/images/backend.png"

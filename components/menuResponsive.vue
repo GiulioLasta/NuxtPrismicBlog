@@ -4,14 +4,17 @@
       <nuxt-icon name="hamburgerButton" class="hamburgerButton" style="color: white" />
     </button>
 
+    
+
     <Transition name="modal">
       <div v-if="showMobileMenu" class="bg-mobile w-11/12 h-screen absolute top-0 right-0 z-[110]">
         <button class="hamburge-menu lg:hidden absolute right-5 top-5" @click="toggleMenu">
           <nuxt-icon name="hamburgerButton" class="hamburgerButton" style="color: white" />
         </button>
+        <img :src="profileImage" alt="Profile picture" class="mb-4 mt-10 mx-auto w-32 h-32 rounded-full object-cover">
         <nav class="w-full my-10">
           <ul v-if="menu && menu.length" class="flex flex-col text-center">
-            <li v-for="(item, index) in menu" :key="index">
+            <li v-for="(item, index) in menu" :key="index" class="py-4 text-3xl">
               <NuxtLink :to="item.uid === homeUidCategory  ? '/' : `/categories/${item.uid}`">
                 {{ item.data?.title }} <!-- Assuming each item has a name -->
               </NuxtLink>
@@ -26,6 +29,7 @@
 <script setup lang="ts">
 import { ref, watch, defineEmits } from 'vue';
 import { usePrismic } from '@prismicio/vue';
+import profileImage from '@/assets/images/me-mountains.jpg';
 // import { useAsyncData, useRuntimeConfig } from '@nuxtjs/composition-api';
 
 // Reactive states
