@@ -1,11 +1,11 @@
 <template>
   
-  <MenuResponsive />
+  <MenuResponsive @updatelayout="handleUpdateFromChild"  />
   <Menu />
 
-  <div class="layout">
+  <div class="overlay hidden" ref="overlay"></div>
+  <div class="layout" ref="layout">
     <main class="content-container">
-      <!-- <MouseLight /> -->
       <NuxtPage /> 
     </main>
     <!-- <Footer />  Your custom footer component -->
@@ -13,15 +13,33 @@
 </template>
 
 <script setup>
-  // import Header from '~/components/header.vue'
-  // import Footer from '~/components/footer.vue'
-  // import MouseLight from '~/components/MouseLight.vue';
   import Menu from '~/components/menu.vue';
   import MenuResponsive from '~/components/menuResponsive.vue';
-  // import BlogListing from '~/components/blogListing.vue';
+  const overlay = ref(null);
+
+  // Method to handle the event from the child
+  const handleUpdateFromChild = (data) => {
+    if(overlay.value) {
+      if(data == 'remove') {
+        overlay.value.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+        
+      } else if(data == 'add') {
+        overlay.value.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+  };
 </script>
 
 <style lang="scss">
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 99;
+  position: absolute;
+}
 
 .layout {
   display: flex;

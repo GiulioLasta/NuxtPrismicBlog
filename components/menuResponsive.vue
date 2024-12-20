@@ -5,7 +5,7 @@
     </button>
 
     <Transition name="modal">
-      <div v-if="showMobileMenu" class="bg-green-400 w-80 h-screen absolute top-0 right-0 z-[110]">
+      <div v-if="showMobileMenu" class="bg-mobile w-11/12 h-screen absolute top-0 right-0 z-[110]">
         <button class="hamburge-menu lg:hidden absolute right-5 top-5" @click="toggleMenu">
           <nuxt-icon name="hamburgerButton" class="hamburgerButton" style="color: white" />
         </button>
@@ -24,13 +24,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, defineEmits } from 'vue';
 import { usePrismic } from '@prismicio/vue';
 // import { useAsyncData, useRuntimeConfig } from '@nuxtjs/composition-api';
 
 // Reactive states
 const showMobileMenu = ref(false);
 const menu = ref([]);
+const emit = defineEmits();
 
 // Prismic client and runtime config
 const prismic = usePrismic();
@@ -56,13 +57,23 @@ watch(route, (newRoute, oldRoute) => {
 // Method to toggle the mobile menu
 const toggleMenu = () => {
   showMobileMenu.value = !showMobileMenu.value;
+    if (showMobileMenu.value) {
+    emit('updatelayout', 'add');
+  } else {
+    emit('updatelayout', 'remove');
+  }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+.bg-mobile {
+  background-color: $dark-blue-bg-mobile;
+}
+
 /* Entering animation */
 .modal-enter-active {
-  @apply duration-700;
+  @apply duration-2000;
   @apply transition-transform;
 }
 .modal-enter-from {
@@ -74,7 +85,7 @@ const toggleMenu = () => {
 
 /* Leaving animation */
 .modal-leave-active {
-  @apply duration-700;
+  @apply duration-3000;
   @apply transition-transform;
 }
 .modal-leave-from {
@@ -82,5 +93,16 @@ const toggleMenu = () => {
 }
 .modal-leave-to {
   @apply translate-x-full; /* End off-screen */
+}
+
+</style>
+
+<style>
+
+
+/* Graying overlay effect */
+.layout.gray-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition */
 }
 </style>
